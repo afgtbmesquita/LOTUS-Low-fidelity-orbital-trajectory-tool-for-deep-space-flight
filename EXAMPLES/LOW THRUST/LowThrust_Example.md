@@ -33,4 +33,4 @@ In the case of low thrust maneuvers, an additional plot is shown that displays t
 
 Moreover, the plot is also interactive. Users can visualize an animation of the trajectory as well as export the spacecraft ephemeris (time and position) by pressing the respective buttons. 
 
-**NOTE**: The raw output file for this simulation is not attached due to size limitations. 
+**NOTE**: The raw output file for this simulation included in this folder. 

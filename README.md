@@ -1,4 +1,4 @@
-# LOTUS - Closed-source student distribution (standalone executable)
+# LOTUS: Low-fidelity Orbital Trajectory Tool for Deep-Space Flight
 
 LOTUS is a low-fidelity orbital trajectory tool for deep-space flight. This
 distribution ships as a single standalone executable produced with MATLAB
@@ -31,7 +31,7 @@ compiledsoftware_executable/dist/
 ## Requirements
 
 - **MATLAB Runtime** matching the release the executable was built with
-  (see the version number the maintainer communicates with the build).
+  (Matlab R2025a).
   Download from [mathworks.com/products/compiler/matlab-runtime.html](https://www.mathworks.com/products/compiler/matlab-runtime.html)
   and install the matching version. No MATLAB license is required for the
   runtime.
@@ -39,12 +39,12 @@ compiledsoftware_executable/dist/
   AWT; it is present on Windows and most desktop Linux installations by
   default. Running over a pure headless SSH session will skip the viewer.
 - Parallel Computing Toolbox support is optional; LOTUS runs
-  single-threaded when it is absent.
+  single-threaded when it is absent at the expense of much longer run time.
 
 ## One-time data setup
 
-The package ships without ephemeris data. Copy the two subfolders below
-from your instructor's master distribution into `dist/data/spice/`:
+The package ships without ephemeris data. Users need to provide MICE and SPICE 
+kernels:
 
 ```
 dist/
@@ -59,7 +59,7 @@ These paths match what `user_input_lotus.json` expects out of the box.
 ## How to run
 
 1. Install the MATLAB Runtime.
-2. Open a terminal and `cd` into the `dist/` directory.
+2. Open a terminal and `cd` into the main directory.
 3. Run the executable:
    - Windows: `lotus.exe`
    - macOS / Linux: `./lotus`
@@ -255,7 +255,7 @@ estimates for plot summaries.
 
 - `massModel.m0Kg` (number) - initial wet mass [kg].
 - `massModel.earthDepartureInitialMassKg` (number) - initial mass before
-  Earth departure [kg]. Used for the first departure burn estimate shown
+  ROI Earth departure [kg]. Used for the first departure burn estimate shown
   in the 3D summary panel.
 - `massModel.ispSec` (number) - specific impulse [s].
 - `massModel.g0` (number) - standard gravity [m/s^2].
@@ -380,9 +380,7 @@ Any other numeric field rejects `null` and expects a finite number.
 - Do not rename or delete the executable or any file it sits next to -
   the CTF archive that holds the LOTUS pipeline is bound to the
   executable.
-- Do not attempt to unpack the `.ctf`/executable. That is covered by the
-  GPL **spirit** of the project - you will get faster answers from your
-  instructor than from reverse engineering the archive.
+- Do not attempt to unpack the `.ctf`/executable. 
 
 ## Troubleshooting
 
@@ -399,5 +397,4 @@ Any other numeric field rejects `null` and expects a finite number.
   no AWT / no display. Use a desktop session or export analyses and
   load them (option 2) on a workstation with a display.
 
-Report bugs, feature requests, or crashes to the instructor rather than
-trying to patch the executable.
+Report bugs, feature requests, or crashes to Afonso Mesquita (amesquita@caltech.edu).

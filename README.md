@@ -6,7 +6,7 @@ Compiler. The entire `+lotus` pipeline is packed inside the executable's
 encrypted CTF archive - no MATLAB source, no P-code, no package folders are
 exposed.
 
-Students interact with the program through exactly one editable file:
+Users interact with the program through exactly one editable file:
 `user_input_lotus.json`.
 
 ## Folder layout

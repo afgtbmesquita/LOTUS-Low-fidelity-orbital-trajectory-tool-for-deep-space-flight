@@ -2,7 +2,7 @@
 The following example describes the general steps to run a simulation using LOTUS to obtain a trajectory from the asteroid Circe to the asteroid Themis using low thrust legs. 
 
 ## Body and Time Window Selection
-Two slots were used to perform this analysis. Slot 1 represents Circe and the time window selected was ["2025 JAN 01", "2029 DEC 31"]. Slot 2 represents the arrival body, in this case Themis. The arrival time window covered during the optimization algorithm was ["2027 JAN 01", "2035 DEC 31"]. `stepDays` was kept at 7.
+Two slots were used to perform this analysis. Slot 1 represents Circe (input NAIF ID 20000034) and the time window selected was ["2025 JAN 01", "2029 DEC 31"]. Slot 2 represents the arrival body, in this case Themis (input NAIF ID 20000024). The arrival time window covered during the optimization algorithm was ["2027 JAN 01", "2035 DEC 31"]. `stepDays` was kept at 7.
 
 The `tofConstraints` variable was kept significantly large to accommodate all possible interactions and permutations. 
 

@@ -138,7 +138,8 @@ Per slot:
 
 - `slotIndex` (integer) - 1-based position of the encounter.
 - `bodies` (array of strings) - candidate SPICE body names for this slot
-  (e.g. `["EARTH"]` or `["EARTH", "MARS"]`).
+  (e.g. `["EARTH"]` or `["EARTH", "MARS"]`). For asteroids and small 
+  bodies use the respective NAIF ID.
 - `windowUtc` (array of two strings) - search window as
   `[startUTC, endUTC]` in SPICE UTC format (e.g. `"2025 JAN 01"`).
 - `stepDays` (number) - time-sampling step inside the window, in days.

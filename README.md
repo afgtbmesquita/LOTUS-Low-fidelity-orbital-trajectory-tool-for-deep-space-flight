@@ -1,6 +1,8 @@
 # LOTUS: Low-fidelity Orbital Trajectory Tool for Deep-Space Flight
 
-LOTUS is a low-fidelity orbital trajectory tool for deep-space flight. This
+LOTUS is a low-fidelity orbital trajectory tool for deep-space flight inspired 
+on NASA JPL's STAR (see citation file) with further modifications to accommodate 
+other requests. This
 distribution ships as a single standalone executable produced with MATLAB
 Compiler. The entire `+lotus` pipeline is packed inside the executable's
 encrypted CTF archive - no MATLAB source, no P-code, no package folders are

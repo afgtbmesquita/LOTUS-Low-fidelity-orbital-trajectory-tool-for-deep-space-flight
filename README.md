@@ -5,8 +5,7 @@ on NASA JPL's STAR (see citation file) with further modifications to accommodate
 other requests. This
 distribution ships as a single standalone executable produced with MATLAB
 Compiler. The entire `+lotus` pipeline is packed inside the executable's
-encrypted CTF archive - no MATLAB source, no P-code, no package folders are
-exposed.
+file.
 
 Users interact with the program through exactly one editable file:
 `user_input_lotus.json`.
@@ -62,9 +61,7 @@ These paths match what `user_input_lotus.json` expects out of the box.
 
 1. Install the MATLAB Runtime.
 2. Open a terminal and `cd` into the main directory.
-3. Run the executable:
-   - Windows: `lotus.exe`
-   - macOS / Linux: `./lotus`
+3. Run the executable.
 4. Choose option 1 for a new analysis, or option 2 to visualize a stored
    `.mat` under `outputs/trajectory_analyses/`.
 
@@ -380,10 +377,8 @@ Any other numeric field rejects `null` and expects a finite number.
 
 ## What NOT to touch
 
-- Do not rename or delete the executable or any file it sits next to -
-  the CTF archive that holds the LOTUS pipeline is bound to the
-  executable.
-- Do not attempt to unpack the `.ctf`/executable. 
+- Do not rename or delete the executable or any file it sits next to.
+- Do not attempt to unpack the executable. 
 
 ## Troubleshooting
 

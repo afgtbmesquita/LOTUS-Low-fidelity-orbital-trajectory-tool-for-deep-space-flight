@@ -397,4 +397,14 @@ Any other numeric field rejects `null` and expects a finite number.
   no AWT / no display. Use a desktop session or export analyses and
   load them (option 2) on a workstation with a display.
 
+  ## Known limitations
+- `lowthrust` assumes continuous thrust over time, not contemplating coasting times. 
+- `lowthrust` can be combined with unpowered flybys but the logic is still not robustically implemented
+- `lowthurst` and `nonresonant`, `resonant`, or `powered` are not compatible together.`lowthurst` is a standalone leg type for the moment
+- `nonresonant`, `resonant`, and `powered` legs are optimized individually. A broader search tool to include all different types in the same leg will be included in a future release. 
+- `mass` calculations are purely indicative and based on first order calculations
+- `vinfsum` considers both departure and arrival v_inf. Individual weights to penalize them differently is currently not available
+- `strictPaperMode` uses native STAR paper approach. It allows to use different boundary conditions and the solver strategy is also based on their previous implementation
+- `DSMs` are implemented through `powered` legs, but not yet fully operational for extended use cases
+
 Report bugs, feature requests, or crashes to Afonso Mesquita (amesquita@caltech.edu).

@@ -23,10 +23,12 @@ Standard run options were used with `diversityMode` set to `exploratory` with a 
 
 The results from LOTUS are detailed below. Technical observations are present in the 3 columns at the end of the figure.
 
-1. Cost Model & Timing: Describes the cost model, general trajectory details, and brief fuel estimates.
-2. Flybys, V_inf & V_helio: Describes the total number of flybys performed and details the velocity of the body at each encounter before and after the flyby.
-3. Events and Total DV: Lists all the events during the trajectory with respective time and displays an overall summary of DV.  
+1. **Cost Model & Timing**: Describes the cost model, general trajectory details, and brief fuel estimates.
+2. **Flybys, V_inf & V_helio**: Describes the total number of flybys performed and details the velocity of the body at each encounter before and after the flyby.
+3. **Events and Total DV**: Lists all the events during the trajectory with respective time and displays an overall summary of DV.  
 
 ![Earth-Saturn Interplanetary Trajectory](Saturn_Result.png)
 
-Moreover, the plot is also interactive. Users can visualize an animation of the trajectory as well as export the spacecraft trajectory (time and position) by pressing the respective buttons. 
+Moreover, the plot is also interactive. Users can visualize an animation of the trajectory as well as export the spacecraft ephemeris (time and position) by pressing the respective buttons. 
+
+**NOTE**: The raw output file for this simulation is not attached due to size limitations. 

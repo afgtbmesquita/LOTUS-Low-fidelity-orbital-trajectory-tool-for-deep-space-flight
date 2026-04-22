@@ -29,7 +29,7 @@ In the case of low thrust maneuvers, an additional plot is shown that displays t
 
 ![Circe-Themis Low Thrust Interplanetary Trajectory](LOW_THRUST.png)
 
-![Thrust Magnitude and Fuel Mass over Time](LOW_THRUST.png)
+![Thrust Magnitude and Fuel Mass over Time](LOW_THRUST_fuel.png)
 
 Moreover, the plot is also interactive. Users can visualize an animation of the trajectory as well as export the spacecraft ephemeris (time and position) by pressing the respective buttons. 
 

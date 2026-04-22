@@ -1,0 +1,55 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as follows."
+title: "LOTUS: Low-fidelity orbital trajectory tool for deep-space flight"
+type: software
+authors:
+  - family-names: "Mesquita"
+    given-names: "Afonso"
+license: "GPL-3.0-or-later"
+references:
+  - type: article
+    title: "Star Searches for Patched-Conic Trajectories"
+    authors:
+      - family-names: "Landau"
+        given-names: "D."
+      - family-names: "Campagnola"
+        given-names: "S."
+      - family-names: "Pellegrini"
+        given-names: "E."
+    journal: "The Journal of the Astronautical Sciences"
+    year: 2022
+    volume: 69
+    start: 1613
+    end: 1648
+    doi: "10.1007/s40295-022-00350-y"
+  - type: article
+    title: "Efficient Maneuver Placement for Automated Trajectory Design"
+    authors:
+      - family-names: "Landau"
+        given-names: "D."
+    journal: "Journal of Guidance, Control, and Dynamics"
+    year: 2018
+    volume: 41
+    issue: 7
+    start: 1531
+    end: 1541
+    doi: "10.2514/1.g003172"
+  - type: article
+    title: "Analytical shaping method for low-thrust rendezvous trajectory using cubic spline functions"
+    authors:
+      - family-names: "Wu"
+        given-names: "D."
+      - family-names: "Zhang"
+        given-names: "T."
+      - family-names: "Zhong"
+        given-names: "Y."
+      - family-names: "Jiang"
+        given-names: "F."
+      - family-names: "Li"
+        given-names: "J."
+    journal: "Acta Astronautica"
+    year: 2022
+    volume: 193
+    start: 511
+    end: 520
+    doi: "10.1016/j.actaastro.2022.01.019"

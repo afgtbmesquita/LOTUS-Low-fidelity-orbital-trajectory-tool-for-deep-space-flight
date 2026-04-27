@@ -1,4 +1,4 @@
-# LOTUS - Closed-source student distribution (standalone executable)
+# LOTUS: Low-fidelity Orbital Trajectory Tool for Deep-Space Flight
 
 LOTUS is a low-fidelity orbital trajectory tool for deep-space flight inspired 
 on NASA JPL's STAR (see citation file) with further modifications to accommodate 
@@ -8,7 +8,7 @@ Compiler. The entire `+lotus` pipeline is packed inside the executable's
 file.
 
 
-Students interact with the program through exactly one editable file:
+Users interact with the program through exactly one editable file:
 `user_input_lotus.json`.
 
 ## Folder layout

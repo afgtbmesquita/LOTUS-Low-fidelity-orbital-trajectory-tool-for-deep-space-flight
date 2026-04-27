@@ -1,4 +1,4 @@
-# LOTUS: Low-fidelity Orbital Trajectory Tool for Deep-Space Flight
+# LOTUS - Closed-source student distribution (standalone executable)
 
 LOTUS is a low-fidelity orbital trajectory tool for deep-space flight inspired 
 on NASA JPL's STAR (see citation file) with further modifications to accommodate 
@@ -7,7 +7,8 @@ distribution ships as a single standalone executable produced with MATLAB
 Compiler. The entire `+lotus` pipeline is packed inside the executable's
 file.
 
-Users interact with the program through exactly one editable file:
+
+Students interact with the program through exactly one editable file:
 `user_input_lotus.json`.
 
 ## Folder layout
@@ -31,8 +32,8 @@ compiledsoftware_executable/dist/
 
 ## Requirements
 
-- **MATLAB Runtime** matching the release the executable was built with
-  (Matlab R2025a).
+- **MATLAB Runtime R2025a** (or the compatible update release for this
+  executable build).
   Download from [mathworks.com/products/compiler/matlab-runtime.html](https://www.mathworks.com/products/compiler/matlab-runtime.html)
   and install the matching version. No MATLAB license is required for the
   runtime.
@@ -40,12 +41,12 @@ compiledsoftware_executable/dist/
   AWT; it is present on Windows and most desktop Linux installations by
   default. Running over a pure headless SSH session will skip the viewer.
 - Parallel Computing Toolbox support is optional; LOTUS runs
-  single-threaded when it is absent at the expense of much longer run time.
+  single-threaded when it is absent.
 
 ## One-time data setup
 
-The package ships without ephemeris data. Users need to provide MICE and SPICE 
-kernels:
+The package ships without ephemeris data. Copy the two subfolders below
+from your instructor's master distribution into `dist/data/spice/`:
 
 ```
 dist/
@@ -60,10 +61,20 @@ These paths match what `user_input_lotus.json` expects out of the box.
 ## How to run
 
 1. Install the MATLAB Runtime.
-2. Open a terminal and `cd` into the main directory.
-3. Run the executable.
+2. Open a terminal and `cd` into the `dist/` directory.
+3. Run the executable:
+   - Windows: `lotus.exe`
+   - macOS / Linux: `./lotus`
 4. Choose option 1 for a new analysis, or option 2 to visualize a stored
    `.mat` under `outputs/trajectory_analyses/`.
+
+Interactive category mode also supports `p` / `pareto` to plot the
+Delta-V vs TOF Pareto frontier using all ranked design-space points
+(not only top-list previews).
+
+When exporting either full or top-only analysis files, LOTUS now keeps
+the full Pareto plotting dataset in
+`payload.result.trajectoryCategories.designSpace`.
 
 To load a non-default JSON file, pass its path as the first argument:
 
@@ -137,8 +148,7 @@ Per slot:
 
 - `slotIndex` (integer) - 1-based position of the encounter.
 - `bodies` (array of strings) - candidate SPICE body names for this slot
-  (e.g. `["EARTH"]` or `["EARTH", "MARS"]`). For asteroids and small 
-  bodies use the respective NAIF ID.
+  (e.g. `["EARTH"]` or `["EARTH", "MARS"]`).
 - `windowUtc` (array of two strings) - search window as
   `[startUTC, endUTC]` in SPICE UTC format (e.g. `"2025 JAN 01"`).
 - `stepDays` (number) - time-sampling step inside the window, in days.
@@ -248,6 +258,17 @@ Parameters used only for low-thrust rapid-shaping legs.
 - `lowThrust.plotSamples` (integer) - samples used when plotting
   lowthrust arcs.
 
+#### `lowThrust.flybyRotation` (object)
+
+Rotation-grid controls used in flyby-final-lowthrust mode, where the
+post-flyby v-infinity is sampled over turn-angle and azimuth before
+solving the final low-thrust leg.
+
+- `flybyRotation.nTurnSteps` (integer) - number of turn-angle samples
+  between 0 and max turn angle.
+- `flybyRotation.nAzimuthSteps` (integer) - number of azimuth samples
+  over `[0, 2*pi)`.
+
 #### `lowThrust.massModel` (object)
 
 Mass model used to convert low-thrust DV into equivalent fuel-burned
@@ -255,9 +276,12 @@ estimates for plot summaries.
 
 - `massModel.m0Kg` (number) - initial wet mass [kg].
 - `massModel.earthDepartureInitialMassKg` (number) - initial mass before
-  ROI Earth departure [kg]. Used for the first departure burn estimate shown
+  Earth departure [kg]. Used for the first departure burn estimate shown
   in the 3D summary panel.
-- `massModel.ispSec` (number) - specific impulse [s].
+- `massModel.ispSec` (number) - specific impulse [s] for non-low-thrust
+  burns.
+- `massModel.ispSecLowThrust` (number) - specific impulse [s] for
+  low-thrust arcs.
 - `massModel.g0` (number) - standard gravity [m/s^2].
 
 ---
@@ -269,6 +293,8 @@ How the pipeline accumulates total mission DV for ranking:
 - `"paper"` - Landau 2022 formula.
 - `"vinfsum"` - sum of v-infinity magnitudes (default).
 - `"parkingOrbit"` - include parking-orbit insertion/departure terms.
+- `"lowthrustdv"` - rank by integrated low-thrust effort only.
+  (`"dvlowthrust"` is accepted as a legacy alias.)
 
 ---
 
@@ -377,8 +403,12 @@ Any other numeric field rejects `null` and expects a finite number.
 
 ## What NOT to touch
 
-- Do not rename or delete the executable or any file it sits next to.
-- Do not attempt to unpack the executable. 
+- Do not rename or delete the executable or any file it sits next to -
+  the CTF archive that holds the LOTUS pipeline is bound to the
+  executable.
+- Do not attempt to unpack the `.ctf`/executable. That is covered by the
+  GPL **spirit** of the project - you will get faster answers from your
+  instructor than from reverse engineering the archive.
 
 ## Troubleshooting
 
@@ -395,14 +425,15 @@ Any other numeric field rejects `null` and expects a finite number.
   no AWT / no display. Use a desktop session or export analyses and
   load them (option 2) on a workstation with a display.
 
-  ## Known limitations
+## Known limitations
 - `lowthrust` assumes continuous thrust over time, not contemplating coasting times. 
-- `lowthrust` can be combined with unpowered flybys but the logic is still not robustically implemented
 - `lowthurst` and `nonresonant`, `resonant`, or `powered` are not compatible together.`lowthurst` is a standalone leg type for the moment
 - `nonresonant`, `resonant`, and `powered` legs are optimized individually. A broader search tool to include all different types in the same leg will be included in a future release. 
 - `mass` calculations are purely indicative and based on first order calculations
 - `vinfsum` considers both departure and arrival v_inf. Individual weights to penalize them differently is currently not available
 - `strictPaperMode` uses native STAR paper approach. It allows to use different boundary conditions and the solver strategy is also based on their previous implementation
 - `DSMs` are implemented through `powered` legs, but not yet fully operational for extended use cases
+- Powered flybys are present but have not been tested together with `lowthrust` legs
+
 
 Report bugs, feature requests, or crashes to Afonso Mesquita (amesquita@caltech.edu).

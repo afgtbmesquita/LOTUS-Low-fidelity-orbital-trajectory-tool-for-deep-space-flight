@@ -1,84 +1,107 @@
 {
   "name": "LOTUS-Mission",
-
   "ephem": {
     "kernelRoot": "data/spice/generic_kernels",
     "micePath": "data/spice/mice"
   },
-
   "slots": [
     {
       "slotIndex": 1,
-      "bodies": ["EARTH"],
-      "windowUtc": ["2025 JAN 01", "2025 DEC 31"],
-      "stepDays": 7
+      "bodies": [
+        "EARTH"
+      ],
+      "windowUtc": [
+        "2035 JAN 01",
+        "2035 DEC 31"
+      ],
+      "stepDays": 30
     },
     {
       "slotIndex": 2,
-      "bodies": ["MERCURY"],
-      "windowUtc": ["2026 JAN 01", "2032 DEC 30"],
-      "stepDays": 7
+      "bodies": [
+        "20000083"
+      ],
+      "windowUtc": [
+        "2040 JAN 01",
+        "2040 DEC 30"
+      ],
+      "stepDays": 30
     }
   ],
-
   "tofConstraints": [
-    {"from": 1, "to": 2, "minDays": 100, "maxDays": 5475}
+    {
+      "from": 1,
+      "to": 2,
+      "minDays": 100,
+      "maxDays": 5475
+    }
   ],
-
   "constraints": {
-    "flybyMinAltitude": 100.0,
-    "maxFlybyDv": 3.0,
+    "flybyMinAltitude": 100,
+    "maxFlybyDv": 3,
     "maxTotalDv": null
   },
-
   "vinfBounds": [
-    [0.0, 10.0],
-    [0.0, 10.0]
+    [
+      0,
+      5
+    ],
+    [
+      0,
+      10
+    ]
   ],
-
   "wesc": 0,
   "wins": 0,
-
   "longWay": "both",
-  "transferType": ["nonresonant"],
-  "Nrev": [[0, 1]],
+  "transferType": [
+    "lowthrust"
+  ],
+  "Nrev": [
+    [
+      1,2
+    ]
+  ],
   "branchSet": 1,
-
   "dvInf": 0.05,
-  "phi": [[0]],
-
-  "dvLeg": 3.0,
+  "phi": [
+    [
+      0
+    ]
+  ],
+  "dvLeg": 3,
   "dDvLeg": 0.2,
-
   "lowThrust": {
     "p1Min": 0.001,
     "nSamples": 120,
     "plotSamples": 250,
+    "flybyRotation": {
+      "nTurnSteps": 8,
+      "nAzimuthSteps": 12
+    },
     "massModel": {
-      "m0Kg": 4000.0,
-      "earthDepartureInitialMassKg": 8000.0,
-      "ispSec": 3000.0,
+      "m0Kg": 4000,
+      "earthDepartureInitialMassKg": 8000,
+      "ispSec": 300,
+      "ispSecLowThrust": 3000,
       "g0": 9.80665
     }
   },
-
-  "legCostModel": "vinfsum",
-
+  "legCostModel": "lowthrustdv",
   "parkingOrbit": {
-    "departureAltitudeKm": 150.0,
-    "arrivalAltitudeKm": 150.0
+    "departureAltitudeKm": 150,
+    "arrivalAltitudeKm": 150
   },
-
   "autoFlyby": {
     "enabled": true,
-    "maxFlybys": 3,
+    "maxFlybys": 1,
     "allowRepeatedBodies": true,
-    "maxCandidateBodies": 2,
-    "candidateBodies": ["EARTH", "MARS"]
+    "maxCandidateBodies": 1,
+    "candidateBodies": [
+      "MARS"
+    ]
   },
-
   "enablePoweredFlyby": false,
-
   "runOptions": {
     "strictPaperMode": false,
     "combineSegmentsMode": "dp",
@@ -86,18 +109,24 @@
     "combineDpMaxFinalCandidates": 200,
     "combineDpBeamWidthPerState": 50,
     "diversityMode": "exploratory",
-    "diversityMinSpacingDaysBySlot": [30],
+    "diversityMinSpacingDaysBySlot": [
+      30
+    ],
     "flybyJoinEnabled": false,
     "flybyJoinKNearest": 50,
     "flybyJoinMaxAbsVinfDiff": 2,
     "flybyJoinMinPairsToActivate": 0
   },
-
   "plot": {
     "enablePlanetOrbits": true,
-    "planetOrbitBodies": ["MERCURY", "EARTH", "VENUS", "MARS"],
+    "planetOrbitBodies": [
+      "MERCURY",
+      "EARTH",
+      "VENUS",
+      "MARS"
+    ],
     "planetOrbitSamples": 350,
-    "planetOrbitMaxStepDays": 2.0,
+    "planetOrbitMaxStepDays": 2,
     "planetOrbitMaxSamples": 6000,
     "showPlanetWindowEndpoints": true,
     "enableLowThrustThrustFuelPlot": true
